@@ -50,7 +50,7 @@ export const Service = {
                 resolve({
                     data: {
                         txn_hash: txn_hash,
-                        status: Date.now().toString(),
+                        status: "PENDING",
                         amount: Math.floor(Math.random() * 10) + 5,
                         type: Math.floor(Math.random() * 4),
                         nonce: Math.floor(Math.random() * 100000) + 1,
@@ -138,7 +138,7 @@ export const Service = {
     generateRandomTransaction: (): any => {
         return {
             txn_hash: (Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
-            status: Date.now().toString(),
+            status: "PENDING",
             amount: Math.floor(Math.random() * 10) + 5,
             type: Math.floor(Math.random() * 4),
             fee: Math.floor(Math.random() * 100) + 1
