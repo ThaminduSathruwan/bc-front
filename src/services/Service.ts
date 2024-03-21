@@ -56,11 +56,11 @@ export const Service = {
                         nonce: Math.floor(Math.random() * 100000) + 1,
                         fee: Math.floor(Math.random() * 100) + 1,
                         senders: Array.from({ length: 4 }, () => ({
-                            sender_key: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
+                            sender_key: "0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
                             amount: 6
                         })),
                         receivers: Array.from({ length: 8 }, () => ({
-                            receiver_key: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
+                            receiver_key: "0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
                             amount: 3
                         }))
                     }
@@ -76,19 +76,19 @@ export const Service = {
                 resolve({
                     data: {
                         block_hash: block_hash,
-                        previous_block_hash: (Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
+                        previous_block_hash: ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
                         total_amount: Math.floor(Math.random() * 1000) + 1,
                         total_fee: Math.floor(Math.random() * 100000) + 1,
                         txn_cnt: Math.floor(Math.random() * 100000) + 1,
                         time_stamp: new Date().toISOString(),
-                        miner: (Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
+                        miner: ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
                         nonce: Math.floor(Math.random() * 100000) + 1,
                         difficulty: Math.floor(Math.random() * 100000) + 1,
                         height: Math.floor(Math.random() * 100000) + 1,
-                        transactions: Array.from({ length: 50 }, () => (Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15))),
-                        uncles: Array.from({ length: 5 }, () => (Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15))),
+                        transactions: Array.from({ length: 50 }, () => ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15))),
+                        uncles: Array.from({ length: 5 }, () => ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15))),
                         sidecar: Array.from({ length: 5 }, () => ({
-                            id: (Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
+                            id: ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
                             size: Math.floor(Math.random() * 100000) + 1
                         }))
                     }
@@ -122,11 +122,11 @@ export const Service = {
                         total_tx_fee: Math.floor(Math.random() * 100) + 1,
                         txn_pool: Math.floor(Math.random() * 100) + 1,
                         miners: [
-                            [Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1],
-                            [Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1],
-                            [Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1],
-                            [Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1],
-                            [Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1]
+                            ["0x" + Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1],
+                            ["0x" + Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1],
+                            ["0x" + Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1],
+                            ["0x" + Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1],
+                            ["0x" + Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1]
                         ]
                     }
                 });
@@ -137,7 +137,7 @@ export const Service = {
     // generate random transaction
     generateRandomTransaction: (): any => {
         return {
-            txn_hash: (Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
+            txn_hash: ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
             status: "PENDING",
             amount: Math.floor(Math.random() * 10) + 5,
             type: Math.floor(Math.random() * 4),
@@ -148,8 +148,8 @@ export const Service = {
     // generate random block
     generateRandomBlock: (): any => {
         return {
-            block_hash: (Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
-            previous_block_hash: (Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
+            block_hash: ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
+            previous_block_hash: ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
             //get random Transaction hashes from savedTransactions
             txn_hashes: savedTransactions.splice(Math.floor(Math.random() * savedTransactions.length), Math.floor(Math.random() * savedTransactions.length)),
             total_amount: Math.floor(Math.random() * 1000) + 1,
