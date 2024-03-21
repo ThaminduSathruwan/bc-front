@@ -71,7 +71,7 @@ const Stream: React.FC<StreamProps> = ({setTransactionData, setBlockData, setLoa
             }
         };
         
-        const intervalId = setInterval(fetchStreamData, 10000);
+        const intervalId = setInterval(fetchStreamData, 2000);
         return () => {
             clearInterval(intervalId);
         };
