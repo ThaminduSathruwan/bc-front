@@ -94,46 +94,46 @@ const BlockView: React.FC<BlockViewProps> = ({ block, setBlockData, closeBlockMo
     
 
     return (
-        <div className="mx-auto bg-sky-100 dark:bg-gray-900 dark:text-white rounded-lg overflow-hidden">
+        <div className="mx-auto bg-sky-100 dark:bg-gray-900 text-blue-950 dark:text-white rounded-lg overflow-hidden">
             <div className="p-8">
                 <div className="bg-white dark:bg-black rounded-lg text-center">
                     <h1 className="text-xl font-bold mb-6 p-2">Block Hash: {block_hash}</h1>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
                     <div>
-                        <p className="text-sm text-gray-500 mb-2">Previous Block Hash</p>
+                        <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Previous Block Hash</p>
                         <p className="text-lg font-semibold">{previous_block_hash}</p>
                     </div>
                     <div>
-                        <p className="text-sm text-gray-500 mb-2">Miner</p>
+                        <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Miner</p>
                         <p className="text-lg font-semibold">{miner}</p>
                     </div>
                     <div>
-                        <p className="text-sm text-gray-500 mb-2">Total Amount</p>
+                        <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Total Amount</p>
                         <p className="text-lg font-semibold">{total_amount}</p>
                     </div>
                     <div>
-                        <p className="text-sm text-gray-500 mb-2">Total Fee</p>
+                        <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Total Fee</p>
                         <p className="text-lg font-semibold">{total_fee}</p>
                     </div>
                     <div>
-                        <p className="text-sm text-gray-500 mb-2">Transaction Count</p>
+                        <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Transaction Count</p>
                         <p className="text-lg font-semibold">{txn_cnt}</p>
                     </div>
                     <div>
-                        <p className="text-sm text-gray-500 mb-2">Nonce</p>
+                        <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Nonce</p>
                         <p className="text-lg font-semibold">{nonce}</p>
                     </div>
                     <div>
-                        <p className="text-sm text-gray-500 mb-2">Difficulty</p>
+                        <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Difficulty</p>
                         <p className="text-lg font-semibold">{difficulty}</p>
                     </div>
                     <div>
-                        <p className="text-sm text-gray-500 mb-2">Time Stamp</p>
+                        <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Time Stamp</p>
                         <p className="text-lg font-semibold">{time_stamp}</p>
                     </div>
                     <div>
-                        <p className="text-sm text-gray-500 mb-2">Height</p>
+                        <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Height</p>
                         <p className="text-lg font-semibold">{height}</p>
                     </div>
                 </div>
