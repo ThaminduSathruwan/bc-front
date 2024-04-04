@@ -9,6 +9,7 @@ import BlockView from './BlockView';
 import TxnView from './TxnView';
 import { toast } from 'react-toastify';
 import Modal from './Modal';
+import { MdReplayCircleFilled } from 'react-icons/md';
 
 interface ReplayProps {
     setLoading: (value: boolean) => void;
@@ -129,18 +130,19 @@ const Replay: React.FC<ReplayProps> = ({setLoading, txnTypes}) => {
 
     return (
         <div className="">
-            <div className="absolute top-4 left-1/2 transform -translate-x-1/2 dark:bg-gray-800 bg-sky-800 rounded-lg shadow-lg w-auto p-2">
-                <form onSubmit={(e) => e.preventDefault()} className="flex flex-col lg:flex-row gap-4 items-center">
-                    <label htmlFor="start-time" className="text-white text-lg font-bold">Start Time:</label>
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 dark:bg-gray-800 bg-sky-800 rounded-lg shadow-lg w-auto p-2">
+                <form onSubmit={(e) => e.preventDefault()} className="flex flex-row gap-2 items-center justify-center">
+                    <label htmlFor="start-time" className="text-white text-xs lg:text-lg font-bold shrink-0">Start:</label>
                     <input
-                        type="datetime-local"
-                        id="start-time"
-                        value={startTime}
-                        onChange={handleStartTimeChange}
-                        className="px-4 py-2 rounded-lg bg-sky-900 text-white focus:outline-none dark:bg-gray-900 dark:text-gray-300"
+                    type="datetime-local"
+                    id="start-time"
+                    value={startTime}
+                    onChange={handleStartTimeChange}
+                    className="px-1 lg:px-2 py-1 text-xs lg:text-lg rounded-lg bg-sky-900 text-white focus:outline-none dark:bg-gray-900 dark:text-gray-300 w-full"
                     />
-                    <button type="submit" onClick={replayTransactions} className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none">
-                        Replay
+                    <button type="submit" onClick={replayTransactions} className="bg-blue-500 text-white p-1 rounded-lg hover:bg-blue-600 focus:outline-none text-sm lg:text-lg">
+                        <MdReplayCircleFilled className="block lg:hidden" />
+                        <span className='hidden lg:block'>Replay</span>
                     </button>
                 </form>
             </div>
