@@ -29,7 +29,7 @@ const Navbar: React.FC<NavbarProps> = ({
     <nav className="relative z-10 flex flex-wrap items-center justify-between p-3 bg-sky-600 dark:bg-gray-800 lg:py-6 lg:px-10">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <img src={Logo} alt="Site Logo" className="h-8 w-8" />
-        <span className="font-semibold text-xl tracking-tight ml-2">OneBCVis</span>
+        <span className="font-semibold text-2xl tracking-tight ml-2">OneBCVis</span>
       </div>
       <div className="block lg:hidden">
         <button
@@ -40,7 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({
         </button>
       </div>
       <div className={`${isMenuOpen ? "block" : "hidden"} w-full lg:flex lg:items-center lg:w-auto lg:justify-between flex-grow`}>
-        <div className="text-sm lg:flex lg:justify-start lg:flex-grow">
+        <div className="text-base lg:flex lg:justify-start lg:flex-grow">
           <button
             className="block mt-4 lg:mt-0 text-white hover:text-gray-200 focus:outline-none mr-4"
             onClick={openStatsModal}
