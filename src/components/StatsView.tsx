@@ -18,7 +18,7 @@ const StatsView: React.FC<StatsViewProps> = ({ StatsData }) => {
     const { transaction_count, block_count, total_tx_amount, total_tx_fee, txn_pool, miners } = StatsData;
     
     return (
-      <div className="max-w-screen-lg mx-auto px-4 dark:text-white text-gray-600">
+      <div className="max-w-screen-lg mx-auto px-4 text-blue-950 dark:text-white text-gray-600">
         <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="dark:bg-gray-800 bg-sky-400 rounded-lg p-4">
             <h3 className="text-base font-semibold mb-2">Transaction Count (Last 1 Hour)</h3>
