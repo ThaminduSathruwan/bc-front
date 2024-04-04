@@ -12,6 +12,7 @@ interface TxnViewProps {
         senders: Sender[] | null;
         receivers: Receiver[] | null;
     };
+    txnTypes: string[];
 }
 
 interface Sender {
@@ -24,14 +25,12 @@ interface Receiver {
     receiver_key: string;
 }
 
-const TxnView: React.FC<TxnViewProps> = ({ txn }) => {
+const TxnView: React.FC<TxnViewProps> = ({ txn, txnTypes }) => {
     const { txn_hash, status, amount, type, nonce, fee, senders, receivers } = txn;
     
-    const [txnTypes, setTxnTypes] = useState(["Legacy", "Crypto", "Contract", "Shared-blob"]);
-
     const [data, setData] = useState<(number | string)[][]>([["From", "To", "Amount"]]);
 
-    const options = {
+    const optionsDarkTheme = {
         sankey: {
             node: {
                 colors: ["#FFA500", "#32CD32"],
@@ -48,6 +47,42 @@ const TxnView: React.FC<TxnViewProps> = ({ txn }) => {
         },
         enableInteractivity: false,
     };
+    
+    const optionsLightTheme = {
+        sankey: {
+            node: {
+                colors: ["#d6336c", "#f59e0b"], 
+                label: {
+                    fontName: "Arial",
+                    fontSize: 14,
+                    color: "#34568B", 
+                },
+            },
+            link: {
+                colorMode: "gradient",
+                colors: ["#d6336c", "#f59e0b"], 
+            },
+        },
+        enableInteractivity: true, 
+    };
+    
+    const optionsLightThemeBlueVariants = {
+    sankey: {
+        node: {
+            colors: ["#1E90FF", "#00CED1"], 
+            label: {
+                fontName: "Arial",
+                fontSize: 14,
+                color: "#000080", 
+            },
+        },
+        link: {
+            colorMode: "gradient",
+            colors: ["#1E90FF", "#00CED1"], 
+        },
+    },
+    enableInteractivity: true,
+};
     
     const openEtherscanLink = () => {
         const etherscanURL = `https://etherscan.io/tx/${txn_hash}`;
@@ -104,13 +139,22 @@ const TxnView: React.FC<TxnViewProps> = ({ txn }) => {
 
             <div className="my-8">
                 <h2 className="text-2xl font-semibold mb-4">Senders & Receivers</h2>
-                <div className="flex justify-center bg-gray-900 p-3 rounded-lg">
+                <div className="flex justify-center dark:block hidden">
                     <Chart
                         chartType="Sankey"
                         width="100%"
                         height="300px"
                         data={data}
-                        options={options}
+                        options={optionsDarkTheme}
+                    />
+                </div>
+                <div className="flex justify-center dark:hidden">
+                    <Chart
+                        chartType="Sankey"
+                        width="100%"
+                        height="300px"
+                        data={data}
+                        options={optionsLightThemeBlueVariants}
                     />
                 </div>
             </div>
