@@ -4,7 +4,7 @@ import { FiMail } from 'react-icons/fi';
 
 const HelpView = () => {
     return (
-        <div className="max-w-screen-lg mx-auto px-4 text-sky-900 dark:text-gray-300">            
+        <div className="max-w-screen-lg mx-auto px-4 text-blue-900 dark:text-gray-300">            
             <section className="mb-12">
                 <h2 className="text-3xl font-semibold mb-4">Getting Started</h2>
                 <p className="text-lg mb-6">To begin exploring the Blockchain Visualizer, simply enter a transaction ID or block hash in the search bar. The visualizer will then display the transaction details or block information, allowing you to interactively explore the blockchain.</p>
