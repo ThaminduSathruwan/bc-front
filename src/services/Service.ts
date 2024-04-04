@@ -21,8 +21,9 @@ export const Service = {
     //get stats data
     // getStatsData: () => ApiService.get('stats/'),
     
-    
-    
+    //get initial data
+    // getInitialData: () => ApiService.get('initial/'),
+
 
     // Below are the function for without API calls
     
@@ -116,7 +117,7 @@ export const Service = {
             setTimeout(() => {
                 resolve({
                     data: {
-                        transaction_count:  Math.floor(Math.random() * 100) + 10,
+                        transaction_count: Math.floor(Math.random() * 100) + 10,
                         block_count: Math.floor(Math.random() * 100) + 1,
                         total_tx_amount: Math.floor(Math.random() * 100) + 100,
                         total_tx_fee: Math.floor(Math.random() * 100) + 1,
@@ -128,6 +129,19 @@ export const Service = {
                             ["0x" + Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1],
                             ["0x" + Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1]
                         ]
+                    }
+                });
+            }, 1000);
+        });
+    },
+    
+    getInitialData: async (): Promise<any> => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve({
+                    data: {
+                        txn_types: [{ name: "Legacy", type: 0 }, { name: "Crypto", type: 1 }, { name: "Contract", type: 2 }, { name: "Shared-blob", type: 3 }],
+                        txn_pool: 0
                     }
                 });
             }, 1000);
@@ -158,6 +172,6 @@ export const Service = {
             time_stamp: new Date().toISOString()
         };
     }
-};
+}
 
 export default Service;
