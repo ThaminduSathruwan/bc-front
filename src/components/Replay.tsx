@@ -8,6 +8,7 @@ import DialogBoxModal from './DialogBoxModal';
 import BlockView from './BlockView';
 import TxnView from './TxnView';
 import { toast } from 'react-toastify';
+import Modal from './Modal';
 
 interface ReplayProps {
     setLoading: (value: boolean) => void;
@@ -165,7 +166,7 @@ const Replay: React.FC<ReplayProps> = ({setLoading, txnTypes}) => {
                     </BlockCarousel>
                 </div>
             )}
-            <DialogBoxModal
+            <Modal
                 isOpen={isTxnModalOpen}
                 title="Transaction Details"
                 body={replayTxnData ? renderTxnContent(replayTxnData) : <div>Loading...</div>}
@@ -174,7 +175,7 @@ const Replay: React.FC<ReplayProps> = ({setLoading, txnTypes}) => {
                 width='60%'
                 height='60%'
             />
-            <DialogBoxModal
+            <Modal
                 isOpen={isBlockModalOpen}
                 title="Block Details"
                 body={replayBlockData ? renderBlockContent(replayBlockData) : <div>Loading...</div>}
