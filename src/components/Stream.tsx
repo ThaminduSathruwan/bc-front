@@ -10,9 +10,10 @@ interface StreamProps {
     setTransactionData: (txnData: any) => void;
     setBlockData: (blockData: any) => void;
     setLoading: (loading: boolean) => void;
+    txnTypes: string[];
 }
 
-const Stream: React.FC<StreamProps> = ({setTransactionData, setBlockData, setLoading}) => {
+const Stream: React.FC<StreamProps> = ({setTransactionData, setBlockData, setLoading, txnTypes}) => {
     const [transaction, setTransaction] = useState<any[]>([]);
     const [block, setBlock] = useState<any[]>([]);
     const [isInitialBlocksSet, setIsInitialBlocksSet] = useState<boolean>(false);
@@ -79,8 +80,8 @@ const Stream: React.FC<StreamProps> = ({setTransactionData, setBlockData, setLoa
     
     return (
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <Transaction transaction={transaction} addTransactionToPool={addTransactionToPool} />
-            <TransactionPool poolTransaction={transactionPool} setTransactionData={setTransactionData} count={count} setLoading={setLoading} />
+            <Transaction transaction={transaction} addTransactionToPool={addTransactionToPool} txnTypes={txnTypes} />
+            <TransactionPool poolTransaction={transactionPool} setTransactionData={setTransactionData} count={count} setLoading={setLoading} txnTypes={txnTypes}/>
             
             {/* Flexbox container to center the BlockCarousel */}
             <div className="flex items-center justify-center mt-8">
