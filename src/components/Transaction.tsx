@@ -10,23 +10,23 @@ interface TransactionProps {
         fee: number;
     }[];
     addTransactionToPool: (txn: any) => void;
+    txnTypes: string[];
 }
 
-const Transaction: React.FC<TransactionProps> = ({ transaction, addTransactionToPool }) => {
+const Transaction: React.FC<TransactionProps> = ({ transaction, addTransactionToPool, txnTypes }) => {
     const svgRef = React.useRef<SVGSVGElement>(null);
-    const transactionTypes = ["Legacy", "Crypto", "Contract", "Shared-blob"]
 
     useEffect(() => {
         const svg = d3.select(svgRef.current);
 
         // Define transaction color based on txn_type
         // const colorScale = d3.scaleOrdinal<string>()
-        //     .domain(transaction.map(txn => transactionTypes[txn.type]))
+        //     .domain(transaction.map(txn => txnTypes[txn.type]))
         //     .range(d3.schemeCategory10);
         
         // Define transaction color based on txn_type
         const colorScale = d3.scaleOrdinal<string>()
-            .domain(Object.values(transactionTypes)) // Use the values of transactionTypes as the domain
+            .domain(Object.values(txnTypes)) // Use the values of txnTypes as the domain
                 .range(d3.schemeCategory10);
 
         // Draw transaction circles
@@ -37,7 +37,7 @@ const Transaction: React.FC<TransactionProps> = ({ transaction, addTransactionTo
             .attr('cx', () => Math.random() * window.innerWidth)
             .attr('cy', () => Math.random() * window.innerHeight)
             .attr('r', txn => txn.amount)
-            .attr('fill', txn => colorScale(transactionTypes[txn.type]))
+            .attr('fill', txn => colorScale(txnTypes[txn.type]))
             .attr('opacity', 0.5);
 
         // Transaction move animation
@@ -51,7 +51,7 @@ const Transaction: React.FC<TransactionProps> = ({ transaction, addTransactionTo
                     if (newCy >= window.innerHeight) {
                         // If the transaction is outside the window, remove it
                         transaction.splice(transaction.findIndex(t => t.txn_hash === txn.txn_hash), 1);
-                        addTransactionToPool({ ...txn, txn_color: colorScale(transactionTypes[txn.type]) });
+                        addTransactionToPool({ ...txn, txn_color: colorScale(txnTypes[txn.type]) });
                         circle.remove();
                     }
                     else {
