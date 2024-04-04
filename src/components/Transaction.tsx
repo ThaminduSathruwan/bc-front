@@ -48,7 +48,7 @@ const Transaction: React.FC<TransactionProps> = ({ transaction, addTransactionTo
                     const currentCx = +circle.attr('cx');
                     const currentCy = +circle.attr('cy');
                     const newCy = currentCy + txn.amount / 2;
-                    if (newCy >= window.innerHeight) {
+                    if (newCy >= window.innerHeight-25) {
                         // If the transaction is outside the window, remove it
                         transaction.splice(transaction.findIndex(t => t.txn_hash === txn.txn_hash), 1);
                         addTransactionToPool({ ...txn, txn_color: colorScale(txnTypes[txn.type]) });
