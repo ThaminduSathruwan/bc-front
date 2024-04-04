@@ -11,9 +11,10 @@ import { toast } from 'react-toastify';
 
 interface ReplayProps {
     setLoading: (value: boolean) => void;
+    txnTypes: string[];
 }
 
-const Replay: React.FC<ReplayProps> = ({setLoading}) => {
+const Replay: React.FC<ReplayProps> = ({setLoading, txnTypes}) => {
     const [startTime, setStartTime] = useState('');
     const [replayedTransactions, setReplayedTransactions] = useState<any[]>([]);
     const [replayedBlocks, setReplayedBlocks] = useState<any[]>([]);
@@ -24,9 +25,6 @@ const Replay: React.FC<ReplayProps> = ({setLoading}) => {
     const [replayBlockData, setReplayBlockData] = useState<any | null>(null);
     const [isTxnModalOpen, setIsTxnModalOpen] = useState(false);
     const [replayTxnData, setReplayTxnData] = useState<any | null>(null);
-
-    const [txnTypes, setTxnTypes] = useState(["Legacy", "Crypto", "Contract", "Shared-blob"]);
-
     
     const handleStartTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setStartTime(event.target.value);
@@ -105,7 +103,7 @@ const Replay: React.FC<ReplayProps> = ({setLoading}) => {
     
     const renderBlockContent = (blockData: any) => {
         return (
-            <BlockView block={blockData} setBlockData={handleSetBlockData} closeBlockModal={closeReplayBlockModal} setLoading={setLoading}/>
+            <BlockView block={blockData} setBlockData={handleSetBlockData} closeBlockModal={closeReplayBlockModal} setLoading={setLoading} txnTypes={txnTypes}/>
         );
     }
     
@@ -124,7 +122,7 @@ const Replay: React.FC<ReplayProps> = ({setLoading}) => {
     
     const renderTxnContent = (txnData: any) => {
         return (
-            <TxnView txn={txnData} />
+            <TxnView txn={txnData} txnTypes={txnTypes}/>
         );
     }
 
@@ -145,8 +143,8 @@ const Replay: React.FC<ReplayProps> = ({setLoading}) => {
                     </button>
                 </form>
             </div>
-            <Transaction transaction={replayedTransactions} addTransactionToPool={addTransactionToReplayPool} />
-            <TransactionPool poolTransaction={replayTransactionPool} setTransactionData={handleSetTxnData} count={0} setLoading={setLoading}/>
+            <Transaction transaction={replayedTransactions} addTransactionToPool={addTransactionToReplayPool} txnTypes={txnTypes} />
+            <TransactionPool poolTransaction={replayTransactionPool} setTransactionData={handleSetTxnData} count={0} setLoading={setLoading} txnTypes={txnTypes}/>
             {replayedBlocks.length === 0 && (
                 <div className='flex items-center justify-center mt-8'>
                     <BlockCarousel children={undefined} />
