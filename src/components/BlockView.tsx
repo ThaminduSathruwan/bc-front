@@ -25,6 +25,7 @@ interface BlockViewProps {
     setBlockData: (blockData: any) => void;
     closeBlockModal: () => void;
     setLoading: (loading: boolean) => void;
+    txnTypes: string[];
 }
 
 interface SideCar {
@@ -32,7 +33,7 @@ interface SideCar {
     size: number;
 }
 
-const BlockView: React.FC<BlockViewProps> = ({ block, setBlockData, closeBlockModal, setLoading }) => {
+const BlockView: React.FC<BlockViewProps> = ({ block, setBlockData, closeBlockModal, setLoading, txnTypes }) => {
     const { block_hash, previous_block_hash, total_amount, total_fee, txn_cnt, time_stamp, miner, nonce, difficulty, height, transactions, uncles, sidecar } = block;
     const [txnData, setTxnData] = useState<any[]>([]);
     const [isTxnModalOpen, setIsTxnModalOpen] = useState(false);
@@ -87,7 +88,7 @@ const BlockView: React.FC<BlockViewProps> = ({ block, setBlockData, closeBlockMo
     
     const renderTxnContent = (txnData: any) => {
         return (
-            <TxnView txn={txnData} />
+            <TxnView txn={txnData} txnTypes={txnTypes}/>
         );
     }
     
