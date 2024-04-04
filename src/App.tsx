@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
+import Tooltip from '@mui/material/Tooltip';
+import { FaInfoCircle } from "react-icons/fa";
 
 import './index.css'; 
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,6 +19,11 @@ import StatsView from './components/StatsView';
 import HelpView from './components/HelpView';
 import Loading from './components/Loading';
 
+interface TransactionType {
+  name: string;
+  type: number;
+}
+
 function App() {
   const [isStatsOpen, setIsStatsOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
@@ -27,6 +34,25 @@ function App() {
   const [blockData, setBlockData] = useState<any | null>(null);
   const [statsData, setStatsData] = useState<any>();
   const [loading, setLoading] = useState(false);
+  const [txnTypes, setTxnTypes] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      try {
+        const response = await Service.getInitialData();
+        const responseTxnTypes = response.data.txn_types
+        const arrayTxnTypes: string[] = [];
+        responseTxnTypes.forEach((txnType: TransactionType)  => {
+          arrayTxnTypes[txnType.type] = txnType.name;
+        });
+        setTxnTypes(arrayTxnTypes);
+      }catch (error) {
+        toast.error("An error occurred!", { theme: "dark" });
+      }
+    }
+    
+    fetchInitialData();
+  }, [])
     
   const openStatsModal = () => {
     const fetchStatsData = async () => {
@@ -119,13 +145,13 @@ function App() {
   
   const renderTransactionContent = (transactionData: any) => {
     return (
-        <TxnView txn={transactionData} />
+        <TxnView txn={transactionData} txnTypes={txnTypes}/>
     );
   }
   
   const renderBlockContent = (blockData: any) => {
     return (
-      <BlockView block={blockData} setBlockData={handleSetBlockData} closeBlockModal={closeBlockModal} setLoading={setLoading}/>
+      <BlockView block={blockData} setBlockData={handleSetBlockData} closeBlockModal={closeBlockModal} setLoading={setLoading} txnTypes={txnTypes}/>
     );
   }
 
@@ -137,15 +163,28 @@ function App() {
   
   const renderReplayContent = () => {
     return (
-      <Replay setLoading={setLoading}/>
+      <Replay setLoading={setLoading} txnTypes={txnTypes} />
+    );
+  }
+  
+  const getTooltipTitle = () => {
+    return (
+      <div className='text-white text-center rounded-lg'>
+        <p>Powered by <a>OneBCVis</a></p>
+      </div>
     );
   }
   
   return (
     <div className="App bg-zinc-100 dark:bg-black dark:text-white max-w-full h-screen overflow-hidden"> 
       <Navbar openStatsModal={openStatsModal} openHelpModal={openHelpModal} onSearch={onSearch} openReplayModal={openReplayModal} />
-      <Stream setTransactionData={handleSetTransactionData} setBlockData={handleSetBlockData} setLoading={setLoading} />
+      <Stream setTransactionData={handleSetTransactionData} setBlockData={handleSetBlockData} setLoading={setLoading} txnTypes={txnTypes} />
       <ToastContainer />
+      {/* <div className='fixed bottom-0 right-0 mb-4 mr-4 hidden md:block lg:block z-50'>
+        <Tooltip title={getTooltipTitle()} key={1}>
+          <FaInfoCircle className="text-2xl hover:text-blue-500 cursor-pointer" />
+        </Tooltip>
+      </div> */}
       {loading ? <Loading /> : null}
       {/* Dialog Boxes */}
       <DialogBoxModal
