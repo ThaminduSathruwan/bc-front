@@ -18,6 +18,7 @@ import TxnView from './components/TxnView';
 import StatsView from './components/StatsView';
 import HelpView from './components/HelpView';
 import Loading from './components/Loading';
+import Modal from './components/Modal';
 
 interface TransactionType {
   name: string;
@@ -187,28 +188,28 @@ function App() {
       </div> */}
       {loading ? <Loading /> : null}
       {/* Dialog Boxes */}
-      <DialogBoxModal
+      <Modal
         isOpen={isStatsOpen}
         title="Stats"
         body={renderStatsContent(statsData)}
         buttons={[]}
         onClose={closeStatsModal}
       />
-      <DialogBoxModal
+      <Modal
         isOpen={isHelpOpen}
         title="Help"
         body={renderHelpContent()}
         buttons={[]}
         onClose = {closeHelpModal}
       />
-      <DialogBoxModal
+      <Modal
         isOpen={isTransactionOpen}
         title="Transaction Details"
         body={transactionData ? renderTransactionContent(transactionData) : <div>Loading...</div>}
         buttons={[]}
         onClose={closeTransactionModal}
       />
-      <DialogBoxModal
+      <Modal
         isOpen={isBlockOpen}
         title="Block Details"
         body={blockData ? renderBlockContent(blockData) : <div>Loading...</div>}
