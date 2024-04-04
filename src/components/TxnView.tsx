@@ -106,7 +106,7 @@ const TxnView: React.FC<TxnViewProps> = ({ txn, txnTypes }) => {
     }, [senders, receivers]);
 
     return (
-        <div className="dark:bg-gray-900 bg-sky-100 text-blue-950 dark:text-white p-8 rounded-lg">
+        <div className="dark:bg-gray-900 bg-sky-100 text-blue-950 dark:text-white p-4 lg:p-8 rounded-lg">
             <div className="bg-white dark:bg-black rounded-lg text-center">
                 <h1 className="text-xl font-bold mb-6 p-2">Transaction Hash: {txn_hash}</h1>
             </div>
