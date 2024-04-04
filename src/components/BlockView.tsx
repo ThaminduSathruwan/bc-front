@@ -5,6 +5,7 @@ import Tooltip from '@mui/material/Tooltip';
 import DialogBoxModal from './DialogBoxModal';
 import TxnView from './TxnView';
 import { toast } from 'react-toastify';
+import Modal from './Modal';
 
 interface BlockViewProps {
     block: {
@@ -95,7 +96,7 @@ const BlockView: React.FC<BlockViewProps> = ({ block, setBlockData, closeBlockMo
 
     return (
         <div className="mx-auto bg-sky-100 dark:bg-gray-900 text-blue-950 dark:text-white rounded-lg overflow-hidden">
-            <div className="p-8">
+            <div className="lg:p-8 p-4">
                 <div className="bg-white dark:bg-black rounded-lg text-center">
                     <h1 className="text-xl font-bold mb-6 p-2">Block Hash: {block_hash}</h1>
                 </div>
@@ -141,7 +142,7 @@ const BlockView: React.FC<BlockViewProps> = ({ block, setBlockData, closeBlockMo
                 {uncles && (
                     <div className="mb-8">
                         <h2 className="text-2xl font-semibold mb-4">Uncles</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
                             {uncles.map((uncle, index) => (
                                 <div key={index} className="dark:bg-gray-700 bg-sky-400 p-4 rounded-lg uncle-block hover:bg-gray-400" onClick={() => getUncleBlock(uncle)}>
                                     <span className="text-sm font-semibold cursor-pointer">{uncle}</span>
@@ -154,7 +155,7 @@ const BlockView: React.FC<BlockViewProps> = ({ block, setBlockData, closeBlockMo
                 {sidecar && (
                     <div className="mb-8">
                         <h2 className="text-2xl font-semibold mb-4">Sidecar</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
                             {sidecar.map((sc, index) => (
                                 <div key={index} className="dark:bg-gray-700 bg-sky-400 p-4 rounded-lg">
                                     <ul className="list-disc list-inside">
@@ -189,14 +190,12 @@ const BlockView: React.FC<BlockViewProps> = ({ block, setBlockData, closeBlockMo
                     </button>
                 </div>
             </div>
-            <DialogBoxModal
+            <Modal
                 isOpen={isTxnModalOpen}
                 title="Transaction Details"
                 body={renderTxnContent(txnData) }
                 buttons={[]}
                 onClose={closeReplayTxnModal}
-                width='60%'
-                height='60%'
             />
         </div>
     );
