@@ -42,11 +42,11 @@ const Card: React.FC<CardProps> = ({ title, content, setBlockData, setLoading })
                 . . .
             </div>
             <div className="block-card bg-sky-800 dark:bg-gray-700 rounded-lg p-4 mb-1 mx-3 hidden md:block lg:block">
-                <p className="font-semibold text-gray-300">Total Amount:</p>
+                <p className="font-semibold text-sky-300 dark:text-gray-300">Total Amount:</p>
                 <p className="text-green-400">{content.total_amount}</p>
-                <p className="font-semibold text-gray-300">Total Fee:</p>
+                <p className="font-semibold text-sky-300 dark:text-gray-300">Total Fee:</p>
                 <p className="text-green-400">{content.total_fee}</p>
-                <p className="font-semibold text-gray-300">No of Transactions:</p>
+                <p className="font-semibold text-sky-300 dark:text-gray-300">No of Transactions:</p>
                 <p className="text-green-400">{content.txn_cnt}</p>
             </div>
             <div className='text-center b-2 lg:text-base text-xs'>
