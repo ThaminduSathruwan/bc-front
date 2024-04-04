@@ -176,7 +176,7 @@ function App() {
   }
   
   return (
-    <div className="App bg-zinc-100 dark:bg-black dark:text-white max-w-full h-screen overflow-hidden"> 
+    <div className="App bg-zinc-100 dark:bg-black text-blue-950 dark:text-white max-w-full h-screen overflow-hidden"> 
       <Navbar openStatsModal={openStatsModal} openHelpModal={openHelpModal} onSearch={onSearch} openReplayModal={openReplayModal} />
       <Stream setTransactionData={handleSetTransactionData} setBlockData={handleSetBlockData} setLoading={setLoading} txnTypes={txnTypes} />
       <ToastContainer />
