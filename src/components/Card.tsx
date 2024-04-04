@@ -37,7 +37,7 @@ const Card: React.FC<CardProps> = ({ title, content, setBlockData, setLoading })
     
     return (
         <div className="card bg-sky-600 dark:bg-gray-800 text-white rounded-lg shadow-lg text-center">
-            <h2 className="font-semibold m-1 lg:text-base text-xs">BLOCK : {title}</h2>
+            <h2 className="font-semibold m-1 lg:text-base text-xs">Block : {title}</h2>
             <div className="block-card bg-sky-800 dark:bg-gray-700 rounded-lg p-4 mb-1 mx-3 md:hidden lg:hidden">
                 . . .
             </div>
