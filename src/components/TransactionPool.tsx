@@ -15,10 +15,10 @@ interface PoolTransactionProps {
     setTransactionData: (txnData: any) => void;
     count: number;
     setLoading: (loading: boolean) => void;
+    txnTypes: string[];
 }
 
-const TransactionPool: React.FC<PoolTransactionProps> = ({ poolTransaction, setTransactionData, count, setLoading }) => {
-    const [txnTypes, setTxnTypes] = useState(["Legacy", "Crypto", "Contract", "Shared-blob"]);
+const TransactionPool: React.FC<PoolTransactionProps> = ({ poolTransaction, setTransactionData, count, setLoading, txnTypes }) => {
 
     const handleTransactionClick = (txnId: string) => {
         const fetchTransactionData = async () => {
@@ -43,6 +43,7 @@ const TransactionPool: React.FC<PoolTransactionProps> = ({ poolTransaction, setT
                 <p className="mb-1">Transaction Hash: <span className="text-gray-300">{txn.txn_hash}</span></p>
                 <p className="mb-1">Transaction Type: <span className="text-gray-300">{txnTypes[txn.type]}</span></p>
                 <p className="mb-1">Transaction Fee: <span className="text-gray-300">{txn.fee}</span></p>
+                <p className="mb-1">Transaction Amount: <span className="text-gray-300">{txn.amount}</span></p>
             </div>
         );
     };
@@ -51,7 +52,7 @@ const TransactionPool: React.FC<PoolTransactionProps> = ({ poolTransaction, setT
         // <div className="absolute bottom-0 left-0 w-full max-h-80 overflow-y-auto">
         <div className="absolute bottom-0 left-0 w-full overflow-y-auto max-h-80">
             {/* <h1 className="text-left text-xl p-2">Transaction Mempool ({poolTransaction.length} transactions)</h1> */}
-            <h1 className="text-left text-xl p-2">Transactions in the Mempool (showing {poolTransaction.length}) </h1>
+            <h1 className="text-left text-lg p-2">Transactions in the Mempool (showing {poolTransaction.length}) </h1>
                 <div className="flex flex-wrap justify-center items-center p-2 rounded-lg">
                     {poolTransaction.map((txn, index) => (
                         <Tooltip
