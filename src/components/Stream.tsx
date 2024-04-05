@@ -53,8 +53,8 @@ const Stream: React.FC<StreamProps> = ({setTransactionData, setBlockData, setLoa
         const fetchStreamData = async () => {
             try {
                 const current_time = new Date();
-                const start_time = initialTime.toISOString();
-                const end_time = current_time.toISOString();
+                const start_time = initialTime.toISOString().replace("T", " ").replace("Z", "");
+                const end_time = current_time.toISOString().replace("T", " ").replace("Z", "");
                 setInitialTime(current_time);
                 const response = await Service.getStreamData(start_time, end_time);
                 setTransaction(response.data.transactions);
