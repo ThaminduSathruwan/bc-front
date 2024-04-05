@@ -113,27 +113,27 @@ const TxnView: React.FC<TxnViewProps> = ({ txn, txnTypes }) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                 <div className="flex flex-col">
                     <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Transaction Hash</p>
-                    <p className="text-lg font-semibold">{txn_hash}</p>
+                    <p className="text-base font-semibold">{txn_hash}</p>
                 </div>
                 <div className="flex flex-col">
                     <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Status</p>
-                    <p className="text-lg font-semibold">{status}</p>
+                    <p className="text-base font-semibold">{status}</p>
                 </div>
                 <div className="flex flex-col">
                     <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Amount</p>
-                    <p className="text-lg font-semibold">{amount}</p>
+                    <p className="text-base font-semibold">{amount}</p>
                 </div>
                 <div className="flex flex-col">
                     <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Type</p>
-                    <p className="text-lg font-semibold">{txnTypes[type]}</p>
+                    <p className="text-base font-semibold">{txnTypes[type]}</p>
                 </div>
                 <div className="flex flex-col">
                     <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Nonce</p>
-                    <p className="text-lg font-semibold">{nonce}</p>
+                    <p className="text-base font-semibold">{nonce}</p>
                 </div>
                 <div className="flex flex-col">
                     <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Fee</p>
-                    <p className="text-lg font-semibold">{fee}</p>
+                    <p className="text-base font-semibold">{fee}</p>
                 </div>
             </div>
 
