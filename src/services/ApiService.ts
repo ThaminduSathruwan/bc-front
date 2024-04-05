@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-const BASE_URL = 'https://l6grth4303.execute-api.us-east-1.amazonaws.com/Prod/';
+const BASE_URL = 'BASE_URL';
 const API_KEY = 'YOUR_API_KEY';
 
 export const ApiService = axios.create({
