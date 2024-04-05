@@ -4,149 +4,149 @@ const savedTransactions: any[] = [];
 
 export const Service = {
     // get stream data
-    getStreamData: (start_time: string, end_time: string) => ApiService.get(`stream/?start_time=${start_time}&end_time=${end_time}`),
+    // getStreamData: (start_time: string, end_time: string) => ApiService.get(`stream/?start_time=${start_time}&end_time=${end_time}`),
 
     // get transaction data using txn_hash
-    getTransactionData: (txn_hash: string) => ApiService.get(`transaction/${txn_hash}`),
+    // getTransactionData: (txn_hash: string) => ApiService.get(`transaction/${txn_hash}`),
     
     //get block data using block_hash
-    getBlockData: (block_hash: string) => ApiService.get(`block/${block_hash}/?full=false`),
+    // getBlockData: (block_hash: string) => ApiService.get(`block/${block_hash}/?full=false`),
 
     //get full block data using block_hash like block/block_hash/?full=true
-    getFullBlockData: (block_hash: string) => ApiService.get(`block/${block_hash}/?full=true`),
+    // getFullBlockData: (block_hash: string) => ApiService.get(`block/${block_hash}/?full=true`),
     
     //get initial blocks
-    getInitialBlocks: () => ApiService.get('block/initial'),
+    // getInitialBlocks: () => ApiService.get('block/initial'),
 
     //get stats data
-    getStatsData: () => ApiService.get('stats/'),
+    // getStatsData: () => ApiService.get('stats/'),
     
     // get initial data
-    getInitialData: () => ApiService.get('initial/'),
+    // getInitialData: () => ApiService.get('initial/'),
 
 
     // Below are the function for without API calls
     
     // get random 100 transactions and 1 block
-    // getStreamData: async (start_time: string, end_time: string): Promise<any> => {
-    //     return new Promise((resolve) => {
-    //         setTimeout(() => {
-    //             const randomTransactions = Array.from({ length: 100 }, () => Service.generateRandomTransaction());
-    //             const randomBlocks = Array.from({ length: 1 }, () => Service.generateRandomBlock());
-    //             savedTransactions.push(...randomTransactions.map((txn: any) => txn.txn_hash));
-    //             resolve({
-    //                 data: {
-    //                     transactions: randomTransactions,
-    //                     blocks: randomBlocks
-    //                 }
-    //             });
-    //         }, 1000);
-    //     });
-    // },
+    getStreamData: async (start_time: string, end_time: string): Promise<any> => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                const randomTransactions = Array.from({ length: 100 }, () => Service.generateRandomTransaction());
+                const randomBlocks = Array.from({ length: 1 }, () => Service.generateRandomBlock());
+                savedTransactions.push(...randomTransactions.map((txn: any) => txn.txn_hash));
+                resolve({
+                    data: {
+                        transactions: randomTransactions,
+                        blocks: randomBlocks
+                    }
+                });
+            }, 1000);
+        });
+    },
     
     // get transaction data using txn_hash API call
-    // getTransactionData: async (txn_hash: string): Promise<any> => {
-    //     return new Promise((resolve) => {
-    //         setTimeout(() => {
-    //             resolve({
-    //                 data: {
-    //                     txn_hash: txn_hash,
-    //                     status: Date.now().toString(),
-    //                     amount: Math.floor(Math.random() * 10) + 5,
-    //                     type: Math.floor(Math.random() * 4),
-    //                     nonce: Math.floor(Math.random() * 100000) + 1,
-    //                     fee: Math.floor(Math.random() * 100) + 1,
-    //                     senders: Array.from({ length: 4 }, () => ({
-    //                         sender_key: "0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
-    //                         amount: 6
-    //                     })),
-    //                     receivers: Array.from({ length: 8 }, () => ({
-    //                         receiver_key: "0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
-    //                         amount: 3
-    //                     }))
-    //                 }
-    //             });
-    //         }, 1000);
-    //     });
-    // },
+    getTransactionData: async (txn_hash: string): Promise<any> => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve({
+                    data: {
+                        txn_hash: txn_hash,
+                        status: Date.now().toString(),
+                        amount: Math.floor(Math.random() * 10) + 5,
+                        type: Math.floor(Math.random() * 4),
+                        nonce: Math.floor(Math.random() * 100000) + 1,
+                        fee: Math.floor(Math.random() * 100) + 1,
+                        senders: Array.from({ length: 4 }, () => ({
+                            sender_key: "0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
+                            amount: 6
+                        })),
+                        receivers: Array.from({ length: 8 }, () => ({
+                            receiver_key: "0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
+                            amount: 3
+                        }))
+                    }
+                });
+            }, 1000);
+        });
+    },
     
     // get full block data using block_hash API call
-    // getFullBlockData: async (block_hash: string): Promise<any> => {
-    //     return new Promise((resolve) => {
-    //         setTimeout(() => {
-    //             resolve({
-    //                 data: {
-    //                     block_hash: block_hash,
-    //                     previous_block_hash: ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
-    //                     total_amount: Math.floor(Math.random() * 1000) + 1,
-    //                     total_fee: Math.floor(Math.random() * 100000) + 1,
-    //                     txn_cnt: Math.floor(Math.random() * 100000) + 1,
-    //                     time_stamp: new Date().toISOString(),
-    //                     miner: ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
-    //                     nonce: Math.floor(Math.random() * 100000) + 1,
-    //                     difficulty: Math.floor(Math.random() * 100000) + 1,
-    //                     height: Math.floor(Math.random() * 100000) + 1,
-    //                     transactions: Array.from({ length: 50 }, () => ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15))),
-    //                     uncles: Array.from({ length: 5 }, () => ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15))),
-    //                     sidecar: Array.from({ length: 5 }, () => ({
-    //                         id: ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
-    //                         size: Math.floor(Math.random() * 100000) + 1
-    //                     }))
-    //                 }
-    //             });
-    //         }, 1000);
-    //     });
-    // },
+    getFullBlockData: async (block_hash: string): Promise<any> => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve({
+                    data: {
+                        block_hash: block_hash,
+                        previous_block_hash: ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
+                        total_amount: Math.floor(Math.random() * 1000) + 1,
+                        total_fee: Math.floor(Math.random() * 100000) + 1,
+                        txn_cnt: Math.floor(Math.random() * 100000) + 1,
+                        time_stamp: new Date().toISOString(),
+                        miner: ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
+                        nonce: Math.floor(Math.random() * 100000) + 1,
+                        difficulty: Math.floor(Math.random() * 100000) + 1,
+                        height: Math.floor(Math.random() * 100000) + 1,
+                        transactions: Array.from({ length: 50 }, () => ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15))),
+                        uncles: Array.from({ length: 5 }, () => ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15))),
+                        sidecar: Array.from({ length: 5 }, () => ({
+                            id: ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
+                            size: Math.floor(Math.random() * 100000) + 1
+                        }))
+                    }
+                });
+            }, 1000);
+        });
+    },
     
     // get 5 initial blocks
-    // getInitialBlocks: async (): Promise<any> => {
-    //     return new Promise((resolve) => {
-    //         setTimeout(() => {
-    //             resolve({
-    //                 data: {
-    //                     blocks: Array.from({ length: 7 }, () => Service.generateRandomBlock())
-    //                 }
-    //             });
-    //         }, 1000);
-    //     });
-    // },
+    getInitialBlocks: async (): Promise<any> => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve({
+                    data: {
+                        blocks: Array.from({ length: 7 }, () => Service.generateRandomBlock())
+                    }
+                });
+            }, 1000);
+        });
+    },
     
     // get stats data
-    // getStatsData: async (): Promise<any> => {
-    //     return new Promise((resolve) => {
-    //         setTimeout(() => {
-    //             resolve({
-    //                 data: {
-    //                     transaction_count: Math.floor(Math.random() * 100) + 10,
-    //                     block_count: Math.floor(Math.random() * 100) + 1,
-    //                     total_tx_amount: Math.floor(Math.random() * 100) + 100,
-    //                     total_tx_fee: Math.floor(Math.random() * 100) + 1,
-    //                     txn_pool: Math.floor(Math.random() * 100) + 1,
-    //                     miners: [
-    //                         ["0x" + Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1],
-    //                         ["0x" + Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1],
-    //                         ["0x" + Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1],
-    //                         ["0x" + Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1],
-    //                         ["0x" + Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1]
-    //                     ]
-    //                 }
-    //             });
-    //         }, 1000);
-    //     });
-    // },
+    getStatsData: async (): Promise<any> => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve({
+                    data: {
+                        transaction_count: Math.floor(Math.random() * 100) + 10,
+                        block_count: Math.floor(Math.random() * 100) + 1,
+                        total_tx_amount: Math.floor(Math.random() * 100) + 100,
+                        total_tx_fee: Math.floor(Math.random() * 100) + 1,
+                        txn_pool: Math.floor(Math.random() * 100) + 1,
+                        miners: [
+                            ["0x" + Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1],
+                            ["0x" + Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1],
+                            ["0x" + Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1],
+                            ["0x" + Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1],
+                            ["0x" + Math.random().toString(36).substring(2, 15), Math.floor(Math.random() * 100) + 1]
+                        ]
+                    }
+                });
+            }, 1000);
+        });
+    },
     
-    // getInitialData: async (): Promise<any> => {
-    //     return new Promise((resolve) => {
-    //         setTimeout(() => {
-    //             resolve({
-    //                 data: {
-    //                     txn_types: [{ name: "Legacy", type: 0 }, { name: "Crypto", type: 1 }, { name: "Contract", type: 2 }, { name: "Shared-blob", type: 3 }],
-    //                     txn_pool: 0
-    //                 }
-    //             });
-    //         }, 1000);
-    //     });
-    // },
+    getInitialData: async (): Promise<any> => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve({
+                    data: {
+                        txn_types: [{ name: "Legacy", type: 0 }, { name: "Crypto", type: 1 }, { name: "Contract", type: 2 }, { name: "Shared-blob", type: 3 }],
+                        txn_pool: 0
+                    }
+                });
+            }, 1000);
+        });
+    },
     
     // generate random transaction
     generateRandomTransaction: (): any => {
