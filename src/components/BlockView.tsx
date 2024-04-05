@@ -103,39 +103,39 @@ const BlockView: React.FC<BlockViewProps> = ({ block, setBlockData, closeBlockMo
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
                     <div>
                         <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Previous Block Hash</p>
-                        <p className="text-lg font-semibold">{previous_block_hash}</p>
+                        <p className="text-base font-semibold">{previous_block_hash}</p>
                     </div>
                     <div>
                         <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Miner</p>
-                        <p className="text-lg font-semibold">{miner}</p>
+                        <p className="text-base font-semibold">{miner}</p>
                     </div>
                     <div>
                         <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Total Amount</p>
-                        <p className="text-lg font-semibold">{total_amount}</p>
+                        <p className="text-base font-semibold">{total_amount}</p>
                     </div>
                     <div>
                         <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Total Fee</p>
-                        <p className="text-lg font-semibold">{total_fee}</p>
+                        <p className="text-base font-semibold">{total_fee}</p>
                     </div>
                     <div>
                         <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Transaction Count</p>
-                        <p className="text-lg font-semibold">{txn_cnt}</p>
+                        <p className="text-base font-semibold">{txn_cnt}</p>
                     </div>
                     <div>
                         <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Nonce</p>
-                        <p className="text-lg font-semibold">{nonce}</p>
+                        <p className="text-base font-semibold">{nonce}</p>
                     </div>
                     <div>
                         <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Difficulty</p>
-                        <p className="text-lg font-semibold">{difficulty}</p>
+                        <p className="text-base font-semibold">{difficulty}</p>
                     </div>
                     <div>
                         <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Time Stamp</p>
-                        <p className="text-lg font-semibold">{time_stamp}</p>
+                        <p className="text-base font-semibold">{time_stamp}</p>
                     </div>
                     <div>
                         <p className="text-sm text-sky-800 dark:text-gray-500 mb-2">Height</p>
-                        <p className="text-lg font-semibold">{height}</p>
+                        <p className="text-base font-semibold">{height}</p>
                     </div>
                 </div>
 
