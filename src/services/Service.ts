@@ -83,9 +83,9 @@ export const Service = {
                     data: {
                         block_hash: block_hash,
                         previous_block_hash: Service.generateRandomHash(),
-                        total_amount: Math.floor(Math.random() * 1000) + 1,
-                        total_fee: Math.floor(Math.random() * 100000) + 1,
-                        txn_count: Math.floor(Math.random() * 100000) + 1,
+                        total_amount: Math.floor(Math.random() * 10000) + 1,
+                        total_fee: Math.floor(Math.random() * 1000) + 1,
+                        txn_count: Math.floor(Math.random() * 100) + 1,
                         time_stamp: new Date().toISOString(),
                         miner: ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
                         nonce: Math.floor(Math.random() * 100000) + 1,
@@ -120,9 +120,9 @@ export const Service = {
                     data: {
                         block_hash: block_hash,
                         previous_block_hash: Service.generateRandomHash(),
-                        total_amount: Math.floor(Math.random() * 1000) + 1,
-                        total_fee: Math.floor(Math.random() * 100000) + 1,
-                        txn_count: Math.floor(Math.random() * 100000) + 1,
+                        total_amount: Math.floor(Math.random() * 10000) + 1,
+                        total_fee: Math.floor(Math.random() * 1000) + 1,
+                        txn_count: Math.floor(Math.random() * 100) + 1,
                         time_stamp: new Date().toISOString(),
                         miner: ("0x" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)),
                         nonce: Math.floor(Math.random() * 100000) + 1,
@@ -204,9 +204,9 @@ export const Service = {
             previous_block_hash: Service.generateRandomHash(),
             //get random Transaction hashes from savedTransactions
             txn_hashes: savedTransactions.splice(Math.floor(Math.random() * savedTransactions.length), Math.floor(Math.random() * savedTransactions.length)),
-            total_amount: Math.floor(Math.random() * 1000) + 1,
-            total_fee: Math.floor(Math.random() * 100000) + 1,
-            txn_count: Math.floor(Math.random() * 100000) + 1,
+            total_amount: Math.floor(Math.random() * 10000) + 1,
+            total_fee: Math.floor(Math.random() * 1000) + 1,
+            txn_count: Math.floor(Math.random() * 100) + 1,
             time_stamp: new Date().toISOString()
         };
     },
