@@ -33,7 +33,8 @@ export const Service = {
         return new Promise((resolve) => {
             setTimeout(() => {
                 const randomTransactions = Array.from({ length: 120}, () => Service.generateRandomTransaction());
-                const randomBlocks = Array.from({ length: 1 }, () => Service.generateRandomBlock());
+                const includeBlock = Math.random() < 0.5; // 50% chance to include the block
+                const randomBlocks = includeBlock ? Array.from({ length: 1 }, () => Service.generateRandomBlock()) : [];
                 savedTransactions.push(...randomTransactions.map((txn: any) => txn.txn_hash));
                 resolve({
                     data: {
