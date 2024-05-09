@@ -202,7 +202,7 @@ const BlockView: React.FC<BlockViewProps> = ({ block, setBlockData, closeBlockMo
 
                 <div className="flex justify-center">
                     <button onClick={openEtherscanLink} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none">
-                        View on Etherscan
+                        View More
                     </button>
                 </div>
             </div>
