@@ -32,8 +32,8 @@ export const Service = {
     getStreamData: async (start_time: string, end_time: string): Promise<any> => {
         return new Promise((resolve) => {
             setTimeout(() => {
-                const randomTransactions = Array.from({ length: 120}, () => Service.generateRandomTransaction());
-                const includeBlock = Math.random() < 0.5; // 50% chance to include the block
+                const randomTransactions = Array.from({ length: 60}, () => Service.generateRandomTransaction());
+                const includeBlock = Math.random() < 0.25; // 25% chance to include the block
                 const randomBlocks = includeBlock ? Array.from({ length: 1 }, () => Service.generateRandomBlock()) : [];
                 savedTransactions.push(...randomTransactions.map((txn: any) => txn.txn_hash));
                 resolve({
